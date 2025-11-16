@@ -1,0 +1,147 @@
+body {
+    font-family: Arial, sans-serif;
+    background: grey;
+    min-height: 100vh;
+}
+
+header {
+    padding: 20px;
+}
+
+.header-top {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.logo {
+    height: 75px;
+    width: auto;
+}
+
+.search-bar {
+    display: flex;
+    gap: 0px;
+}
+
+.search-bar input {
+    padding: 10px 20px;
+    border: none;
+    /*border-radius: 25px;*/
+    width: 300px;
+    font-size: 16px;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.3s;
+    font-size: 18px;
+}
+
+nav {
+    max-width: 950px;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(0deg, #3a3a3a 0%, #314072 100%);
+    padding-left: 50px;
+    font-size: larger;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 15px; /* Use margin-right, not padding-left */
+}
+
+nav a:last-of-type {
+    margin-right: 200px; /* Remove margin from last link */
+}
+
+.social-icons {
+    margin-right: 10px;
+    display: flex;
+    gap: 5px; /* Space between icons */
+    align-items: center;
+}
+
+.social-icons img {
+    height: 25px;
+    width: auto;
+    cursor: pointer;
+}
+
+.hero {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.pass-container {
+    background: white;
+    border-radius: 0px;
+    padding: 50px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+h1 {
+    font-size: 48px;
+    color: #764ba2;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.terms {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid #e0e0e0;
+    color: #777;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+footer {
+    margin: 0px auto;
+    max-width: 970px;
+    background-color: #DCDAD7;
+    color: #918B81;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 60px;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 32px;
+    }
+    
+    .price {
+        font-size: 48px;
+    }
+    
+    .pass-container {
+        padding: 30px 20px;
+    }
+    
+    .benefits {
+        grid-template-columns: 1fr;
+    }
+
+    /* Smaller logo on narrow screens */
+    .logo {
+        height: 35px;
+    }
+}
