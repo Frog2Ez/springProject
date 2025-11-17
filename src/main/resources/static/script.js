@@ -1,6 +1,39 @@
 // API base URL - adjust this to match your Spring Boot server
 const API_BASE_URL = 'http://localhost:8080';
 
+// Shopping cart state
+let cart = [];
+
+// Function to update cart display
+function updateCartDisplay() {
+    const cartCount = document.getElementById('cart-count');
+    const cartTotal = document.getElementById('cart-total');
+    
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    
+    cartCount.textContent = totalItems;
+    cartTotal.textContent = `€${totalPrice.toFixed(2)}`;
+}
+
+// Function to add item to cart
+function addToCart(item, discountedPrice) {
+    const existingItem = cart.find(cartItem => cartItem.id === item.id);
+    
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id: item.id,
+            name: item.productName,
+            price: parseFloat(discountedPrice),
+            quantity: 1
+        });
+    }
+    
+    updateCartDisplay();
+}
+
 // Function to calculate discounted price
 function calculateDiscountedPrice(price, discount) {
     return (price * (1 - discount)).toFixed(2);
@@ -10,13 +43,15 @@ function calculateDiscountedPrice(price, discount) {
 function createProductCard(item) {
     const discountedPrice = calculateDiscountedPrice(item.listedPrice, item.discount);
     const discountPercentage = Math.round(item.discount * 100);
-
+    const category = item.categoryID || 'PRODUCT';
+    const categoryLower = category.toLowerCase();
+    
     return `
         <div class="product-card">
-            <div class="product-type ${item.categoryID.toLowerCase()}">${item.categoryID}</div>
+            <div class="product-type ${categoryLower}">${category}</div>
             ${item.discount > 0 ? `<div class="product-discount">-${discountPercentage}%</div>` : ''}
             <div class="product-image">
-                <i class="fas ${item.categoryID === 'MOVIE' ? 'fa-film' : 'fa-gamepad'}"></i>
+                <i class="fas ${category === 'MOVIE' ? 'fa-film' : 'fa-gamepad'}"></i>
             </div>
             <h3 class="product-name">${item.productName}</h3>
             <p class="product-description">${item.description}</p>
@@ -27,7 +62,7 @@ function createProductCard(item) {
             <div class="product-stock">
                 ${item.quantity > 0 ? `<span class="in-stock"><i class="fas fa-check-circle"></i> ${item.quantity} in stock</span>` : '<span class="out-of-stock">Out of stock</span>'}
             </div>
-            <button class="add-to-cart-btn" ${item.quantity === 0 ? 'disabled' : ''}>
+            <button class="add-to-cart-btn" ${item.quantity === 0 ? 'disabled' : ''} onclick="addToCart(${JSON.stringify(item).replace(/"/g, '&quot;')}, ${discountedPrice})">
                 <i class="fas fa-shopping-cart"></i> Add to Cart
             </button>
         </div>
@@ -39,27 +74,27 @@ async function loadProducts() {
     const productsGrid = document.getElementById('products-grid');
     const loading = document.getElementById('loading');
     const error = document.getElementById('error');
-
+    
     try {
         const response = await fetch(`${API_BASE_URL}/items`);
-
+        
         if (!response.ok) {
             throw new Error('Failed to fetch products');
         }
-
+        
         const items = await response.json();
-
+        
         // Hide loading
         loading.style.display = 'none';
-
+        
         if (items.length === 0) {
             productsGrid.innerHTML = '<p class="no-products">No products available at the moment.</p>';
             return;
         }
-
+        
         // Create product cards
         productsGrid.innerHTML = items.map(item => createProductCard(item)).join('');
-
+        
     } catch (err) {
         console.error('Error loading products:', err);
         loading.style.display = 'none';

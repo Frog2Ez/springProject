@@ -10,7 +10,12 @@
 </head>
 
 <body>
-    <header>
+     <header>
+        <div class="cart-widget" id="cart-widget">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-total" id="cart-total">€0.00</span>
+            <span class="cart-count" id="cart-count">(0)</span>
+        </div>
         <div class="header-top">
             <img src="logo.png" alt="Xtra-vision Logo" class="logo">
             <div class="search-bar">
@@ -33,6 +38,7 @@
 
     <div class="hero">
         <div class="pass-container">
+            
             <div id="products-grid" class="products-grid">
                 <!-- Products will be loaded here dynamically -->
             </div>
