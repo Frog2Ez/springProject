@@ -19,6 +19,8 @@ public class ItemsJdbcRepository {
 
 	private static String INSERT_QUERY = "INSERT INTO ITEMS (ID, PRODUCT_NAME, CATEGORY_ID, DESCRIPTION, LISTED_PRICE, DISCOUNT, QUANTITY) VALUES(?, ?, ?, ?, ?, ?, ?)";
 
+	private static String UPDATE_QUERY = "UPDATE ITEMS SET PRODUCT_NAME = ?, CATEGORY_ID = ?, DESCRIPTION = ?, LISTED_PRICE = ?, DISCOUNT = ?, QUANTITY = ? WHERE ID = ?";
+
 	private static String DELETE_QUERY = "DELETE FROM ITEMS WHERE ID = ?";
 
 	private static String SELECT_ALL = "SELECT * FROM ITEMS";
@@ -32,6 +34,17 @@ public class ItemsJdbcRepository {
 				items.getListedPrice(), 
 				items.getDiscount(), 
 				items.getQuantity());
+	}
+
+	public int update(Items items) {
+		return springJdbcTemplate.update(UPDATE_QUERY,
+				items.getProductName(), 
+				items.getCategoryID(), 
+				items.getDescription(), 
+				items.getListedPrice(), 
+				items.getDiscount(), 
+				items.getQuantity(),
+				items.getId());
 	}
 
 	public int deleteById(long id) {

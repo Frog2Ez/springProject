@@ -1,0 +1,26 @@
+-- Items table data
+-- Movies
+INSERT INTO ITEMS (ID, PRODUCT_NAME, CATEGORY_ID, DESCRIPTION, LISTED_PRICE, DISCOUNT, QUANTITY)
+VALUES (1, 'The Matrix', 'MOVIE', 'Sci-fi action film about simulated reality', 4.99, 0.10, 5);
+
+INSERT INTO ITEMS (ID, PRODUCT_NAME, CATEGORY_ID, DESCRIPTION, LISTED_PRICE, DISCOUNT, QUANTITY)
+VALUES (2, 'Inception', 'MOVIE', 'Mind-bending thriller about dream invasion', 5.99, 0.15, 3);
+
+INSERT INTO ITEMS (ID, PRODUCT_NAME, CATEGORY_ID, DESCRIPTION, LISTED_PRICE, DISCOUNT, QUANTITY)
+VALUES (3, 'The Godfather', 'MOVIE', 'Classic crime drama about a mafia family', 3.99, 0.05, 4);
+
+INSERT INTO ITEMS (ID, PRODUCT_NAME, CATEGORY_ID, DESCRIPTION, LISTED_PRICE, DISCOUNT, QUANTITY)
+VALUES (4, 'Interstellar', 'MOVIE', 'Epic space exploration adventure', 5.99, 0.20, 2);
+
+-- Games
+INSERT INTO ITEMS (ID, PRODUCT_NAME, CATEGORY_ID, DESCRIPTION, LISTED_PRICE, DISCOUNT, QUANTITY)
+VALUES (5, 'The Last of Us', 'GAME', 'Post-apocalyptic action-adventure game', 6.99, 0.25, 3);
+
+INSERT INTO ITEMS (ID, PRODUCT_NAME, CATEGORY_ID, DESCRIPTION, LISTED_PRICE, DISCOUNT, QUANTITY)
+VALUES (6, 'Red Dead Redemption 2', 'GAME', 'Open-world western adventure', 7.99, 0.15, 4);
+
+INSERT INTO ITEMS (ID, PRODUCT_NAME, CATEGORY_ID, DESCRIPTION, LISTED_PRICE, DISCOUNT, QUANTITY)
+VALUES (7, 'God of War', 'GAME', 'Action-adventure game based on Norse mythology', 6.99, 0.20, 5);
+
+INSERT INTO ITEMS (ID, PRODUCT_NAME, CATEGORY_ID, DESCRIPTION, LISTED_PRICE, DISCOUNT, QUANTITY)
+VALUES (8, 'Spider-Man', 'GAME', 'Superhero action-adventure game', 5.99, 0.10, 6);

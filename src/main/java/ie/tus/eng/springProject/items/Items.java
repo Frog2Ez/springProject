@@ -1,13 +1,34 @@
 package ie.tus.eng.springProject.items;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "ITEMS")
 public class Items {
-	private long id;
-	private String productName;
-	private String categoryID;
-	private String description;
-	private double listedPrice;
-	private double discount;
-	private int quantity;
+    @Id
+    @Column(name = "ID")
+    private long id;
+    
+    @Column(name = "PRODUCT_NAME")
+    private String productName;
+    
+    @Column(name = "CATEGORY_ID")
+    private String categoryID;
+    
+    @Column(name = "DESCRIPTION")
+    private String description;
+    
+    @Column(name = "LISTED_PRICE")
+    private double listedPrice;
+    
+    @Column(name = "DISCOUNT")
+    private double discount;
+    
+    @Column(name = "QUANTITY")
+    private int quantity;
 	
 	
 	public Items() {

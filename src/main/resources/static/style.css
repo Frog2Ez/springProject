@@ -99,8 +99,168 @@ nav a:last-of-type {
 h1 {
     font-size: 48px;
     color: #764ba2;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     text-transform: uppercase;
+}
+
+/* Products Grid */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+    text-align: left;
+}
+
+.product-card {
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.product-type {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}
+
+.product-type.movie {
+    background: #e74c3c;
+}
+
+.product-type.game {
+    background: #3498db;
+}
+
+.product-discount {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #27ae60;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.product-image {
+    text-align: center;
+    margin: 30px 0 20px;
+    font-size: 60px;
+    color: #764ba2;
+}
+
+.product-name {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+    min-height: 50px;
+}
+
+.product-description {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.product-pricing {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.original-price {
+    color: #999;
+    text-decoration: line-through;
+    font-size: 16px;
+}
+
+.discounted-price {
+    color: #e74c3c;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.product-stock {
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.in-stock {
+    color: #27ae60;
+}
+
+.in-stock i {
+    margin-right: 5px;
+}
+
+.out-of-stock {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.add-to-cart-btn {
+    width: 100%;
+    padding: 12px;
+    background: #764ba2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.add-to-cart-btn:hover:not(:disabled) {
+    background: #5a3780;
+}
+
+.add-to-cart-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.add-to-cart-btn i {
+    margin-right: 8px;
+}
+
+/* Loading and Error States */
+.loading, .error {
+    text-align: center;
+    padding: 40px;
+    font-size: 18px;
+    color: #666;
+}
+
+.error {
+    color: #e74c3c;
+}
+
+.no-products {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    font-size: 18px;
 }
 
 .terms {
@@ -127,19 +287,20 @@ footer {
         font-size: 32px;
     }
     
-    .price {
-        font-size: 48px;
-    }
-    
     .pass-container {
         padding: 30px 20px;
-    }
-    
-    .benefits {
-        grid-template-columns: 1fr;
     }
 
     .logo {
         height: 35px;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .product-name {
+        min-height: auto;
     }
 }
